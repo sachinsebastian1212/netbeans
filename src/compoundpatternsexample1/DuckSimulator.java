@@ -12,10 +12,10 @@ package compoundpatternsexample1;
 public class DuckSimulator {
     
     public void simulate(){
-        Quackable mallardDuck = new MallardDuck();
-        Quackable redHeadDuck = new RedHeadDuck();
-        Quackable duckCall = new DuckCall();
-        Quackable rubberDuck = new RubberDuck();
+        Quackable mallardDuck = new QuackCounter(new MallardDuck());
+        Quackable redHeadDuck = new QuackCounter(new RedHeadDuck());
+        Quackable duckCall = new QuackCounter(new DuckCall());
+        Quackable rubberDuck = new QuackCounter(new RubberDuck());
         Quackable gooseDuck = new GooseAdapter(new Goose());
         
         System.out.println("Duck  Simulator");
@@ -25,6 +25,8 @@ public class DuckSimulator {
         simulate(duckCall);
         simulate(rubberDuck);
         simulate(gooseDuck);
+        
+        System.out.println("Ducks quacked " + QuackCounter.getQuackCount() + "times");
     }
     
     public void simulate(Quackable duck){
