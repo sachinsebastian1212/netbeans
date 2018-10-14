@@ -16,7 +16,8 @@ public class CompoundPatternsExample1 {
      */
     public static void main(String[] args) {
         DuckSimulator duckSimulator = new DuckSimulator();
-        duckSimulator.simulate();
+        AbstractDuckFactory duckFactory = new DuckFactory();
+        duckSimulator.simulate(duckFactory);
     }
     
 }

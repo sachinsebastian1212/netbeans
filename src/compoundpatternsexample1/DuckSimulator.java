@@ -11,11 +11,11 @@ package compoundpatternsexample1;
  */
 public class DuckSimulator {
     
-    public void simulate(){
-        Quackable mallardDuck = new QuackCounter(new MallardDuck());
-        Quackable redHeadDuck = new QuackCounter(new RedHeadDuck());
-        Quackable duckCall = new QuackCounter(new DuckCall());
-        Quackable rubberDuck = new QuackCounter(new RubberDuck());
+    public void simulate(AbstractDuckFactory duckFactory){
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redHeadDuck = duckFactory.createRedHeadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
         Quackable gooseDuck = new GooseAdapter(new Goose());
         
         System.out.println("Duck  Simulator");
@@ -26,10 +26,10 @@ public class DuckSimulator {
         simulate(rubberDuck);
         simulate(gooseDuck);
         
-        System.out.println("Ducks quacked " + QuackCounter.getQuackCount() + "times");
+        System.out.println("Ducks quacked " + QuackCounter.getQuackCount() + " times");
     }
     
-    public void simulate(Quackable duck){
+    private void simulate(Quackable duck){
         duck.quack();
     }
 }
