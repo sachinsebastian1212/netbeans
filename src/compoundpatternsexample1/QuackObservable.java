@@ -9,6 +9,8 @@ package compoundpatternsexample1;
  *
  * @author sachi
  */
-public interface Quackable extends QuackObservable{
-    public void quack();
+public interface QuackObservable {
+    public void registerObserver(Observer observer);
+    public void notifyObservers();
+    
 }
